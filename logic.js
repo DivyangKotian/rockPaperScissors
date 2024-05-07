@@ -24,19 +24,19 @@ const finalWin= document.querySelector(`#final-winner`);
 // call the playGame() when an img is clicked
 
 btnRock.addEventListener(`click`, (e)=>{
-    if (currentRound < totalRound) {            // to stop players from making a choice after 5 rounds
+    if (playerScore<5 && compScore<5) {            // to stop players from making a choice after 5 rounds
     playerSelection= "rock";
     playOneRound();     
 }});
 
 btnPaper.addEventListener(`click`, (e)=>{
-    if (currentRound < totalRound) {
+    if (playerScore<5 && compScore<5) {
     playerSelection= "paper";
   playOneRound();
 }});
 
 btnScissor.addEventListener(`click`, (e)=>{
-    if (currentRound < totalRound) {
+    if (playerScore<5 && compScore<5) {
     playerSelection= "scissor";
     playOneRound();
 }});
@@ -78,7 +78,7 @@ console.log(result);
 
 updateScore();                      //updating score every round    
 
-if(currentRound>=totalRound)
+if(playerScore===5 || compScore===5)
     endGame();  
 return;                    //function to end game and reset all scores
 }
