@@ -20,12 +20,11 @@ const playerElement= document.querySelector(`#player-selection`);
 const computerElement= document.querySelector(`#comp-selection`);
 
 const finalWin= document.querySelector(`#final-winner`);
-
 // adding eventListeners to the images, for player input
 // call the playGame() when an img is clicked
 
 btnRock.addEventListener(`click`, (e)=>{
-    if (currentRound < totalRound) {
+    if (currentRound < totalRound) {            // to stop players from making a choice after 5 rounds
     playerSelection= "rock";
     playOneRound();     
 }});
@@ -51,8 +50,8 @@ function playOneRound(){              // intial code is only for one round of th
 
     computerSelection = getRandomChoice(choices);
 
-    playerElement.textContent=`Player chose ${playerSelection}`;
-    computerElement.textContent=`computer chose ${computerSelection}`;
+    playerElement.textContent=`Player chose : ${playerSelection}`;
+    computerElement.textContent=`Computer chose : ${computerSelection}`;
 
     if(computerSelection==playerSelection){                        //tie condition
         result="the round ends in a tie, try again";
@@ -91,30 +90,30 @@ function updateScore(){
     if(result.includes("win"))
     playerScore++;
     if( result.includes("lose"))
-         compScore++;
-    if( result.includes("tie")|| result.includes("Please"))               // replaying round in case of tie
-         currentRound--;
+    compScore++;
+if( result.includes("tie")|| result.includes("Please"))               // replaying round in case of tie
+currentRound--;
 updateScoreBoard();                                                        
 }
 
 
 function updateScoreBoard(){                                                // funtion to update the scoreboard
-
+    
     const playerScoreBoard = document.querySelector(`#player-score`);       // elements relating to the <p> tags in scoreboard
     const compScoreBoard = document.querySelector(`#comp-score`);
-
+    
     playerScoreBoard.textContent=`Player Score: ${playerScore}`;            //updating the UI scoreboards text content
     compScoreBoard.textContent=`Computer Score: ${compScore}`;
 }
 
 function endGame(){
-
+    
     updateScoreBoard();
     
     setTimeout(() => {                  // set a delay so that the scoreboard can update before alert message shows up
         
-
-    const message=`Game Over!!! Final scores are Player-${playerScore} and Computer -${compScore}`;
+        
+        const message=`Game Over!!! Final scores are Player-${playerScore} and Computer -${compScore}`;
 
     window.alert(message);
     let winner;
@@ -123,15 +122,15 @@ function endGame(){
     else
         winner="Computer Wins, better luck next time";      
     finalWin.textContent=winner;                                            //address final winner in next <p>                                                     
-    }, 100);   
-                 // Adjust the delay time : 100ms as stater
+}, 100);   
+// Adjust the delay time : 100ms as stater
 }
-    const newGameBtn=document.querySelector(`#new-game`);
-    
+const newGameBtn=document.querySelector(`#new-game`);
+
     newGameBtn.addEventListener(`click`, (e) =>{
         newGame();
     })
-
+    
     function newGame(){                                          // resetting all parameters  
         playerElement.textContent=``;   
         computerElement.textContent=``; 
@@ -141,4 +140,6 @@ function endGame(){
         compScore=0;
         updateScoreBoard();
     }
-
+    
+    
+    
