@@ -24,7 +24,7 @@ const finalWin= document.querySelector(`#final-winner`);
 // call the playGame() when an img is clicked
 
 btnRock.addEventListener(`click`, (e)=>{
-    if (playerScore<5 && compScore<5) {            // to stop players from making a choice after 5 rounds
+    if (playerScore<5 && compScore<5) {            // to stop players from making a choice after game over, first to 5 wins
     playerSelection= "rock";
     playOneRound();     
 }});
@@ -131,7 +131,7 @@ const newGameBtn=document.querySelector(`#new-game`);
         newGame();
     })
     
-    function newGame(){                                          // resetting all parameters  
+    function newGame(){                                          // resetting all parameters  for new game
         playerElement.textContent=``;   
         computerElement.textContent=``; 
         finalWin.textContent=``;                                                
